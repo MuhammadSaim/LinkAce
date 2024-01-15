@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
@@ -24,6 +25,7 @@ use Venturecraft\Revisionable\RevisionableTrait;
  * @property int                   $id
  * @property int                   $user_id
  * @property string                $url
+ * @property string                $short_code
  * @property string                $title
  * @property string|null           $description
  * @property string|null           $icon
@@ -160,6 +162,14 @@ class Link extends Model
     public function notes(): HasMany
     {
         return $this->hasMany(Note::class, 'link_id');
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function getShortUrl(): HasOne
+    {
+        return $this->hasOne(ShortURL::class, 'link_id');
     }
 
     /*

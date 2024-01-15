@@ -219,3 +219,17 @@ function guestRoutes(): array
 {
     return ['guest/*', 'login', 'forgot-password', 'reset-password/*', 'two-factor-challenge', 'email/verify'];
 }
+
+
+/**
+ *
+ * generate the shortcode for the url shortener
+ *
+ * @param int $min
+ * @param int $max
+ * @return string
+ */
+function get_short_code(int $min = 4, int $max = 10): string
+{
+
+}
